@@ -3,9 +3,14 @@ var recW = 280;
 var recH = 40;
 var recC = 20;
 var recR = 0;
+var recRMin = 0; // GUI min
+var recRMax; // GUI max
+var recRStep; // GUI step
 // setup variables for the triangele
 var triB = 150;
 var triF = 50;
+// meue
+var gui;
 
 // Setup run one on start up
 function setup() {
@@ -16,6 +21,13 @@ function setup() {
   makeing the canvas crate some variables we can use like height and width
   point (0,0) is not in the botome left it is top left
   */
+
+  // debug tool's
+  recRMax = PI*2;
+  recRStep = PI/180;
+  gui = createGui("debug");
+  gui.addGlobals('recR');
+  gui.hide();
 
   rectMode(CENTER);
 }
