@@ -22,14 +22,19 @@ function setup() {
   point (0,0) is not in the botome left it is top left
   */
 
-  // debug tool's
+  // setup debug tool's
+  // setup var need for makeing the meue
   recRMin = -PI;
   recRMax = PI;
   recRStep = PI/180;
+  // makeing the meue
   gui = createGui("debug");
+  // add the recR as a oppshen
   gui.addGlobals('recR');
+  // hideing the meue
   gui.hide();
 
+  // seting the way that x and y work on rect
   rectMode(CENTER);
 }
 
@@ -38,6 +43,7 @@ function draw() {
   // set the bockground cooler
   background('#de411b');
 
+  // geting the cos and sin of the angle
   var cos_a = cos(recR);
   var sin_a = sin(recR);
   // add a round rectangle+
