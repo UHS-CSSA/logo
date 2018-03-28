@@ -9,6 +9,9 @@ var recRStep; // GUI step
 // setup variables for the triangele
 var triB = 150;
 var triF = 50;
+// setup variables for text
+var textLS = 210;
+var textSS = 85;
 // meue
 var gui;
 
@@ -30,12 +33,15 @@ function setup() {
   // makeing the meue
   gui = createGui("debug");
   // add the recR as a oppshen
-  gui.addGlobals('recR');
+  gui.addGlobals('recR','textLS', 'textSS');
   // hideing the meue
   gui.hide();
 
   // seting the way that x and y work on rect
   rectMode(CENTER);
+
+  // load and set font
+  textFont('Roboto');
 }
 
 // Draw run ever frame
@@ -54,13 +60,22 @@ function draw() {
   // (x, y, w, h, d)
   rect(0, 0, recW, recH, recC);
 
+  // Add css to the bar
+  textSize(textSS);
+  text('css', recC-(recW/2), recH/2);
+
   // I reset the orgen and Matrix to not efect other things
   translate(0,0);
   resetMatrix();
 
-  // add triangele
-  // (x1,y1,x2,y2,x3,y3)
-  triangle((width/2)-(triB/2), height-triF, (width/2), (height/2), (width/2)+(triB/2), height-triF);
+  // OLD use when makeing the basic shape
+    // add triangele
+    // (x1,y1,x2,y2,x3,y3)
+    //triangle((width/2)-(triB/2), height-triF, (width/2), (height/2), (width/2)+(triB/2), height-triF);
+
+  // put the lass leater of A down
+  textSize(textLS);
+  text('A', (width/2)-(triB/2), height-triF);
 
   // add a cericle I am going to use the hight of the rect
   // (x,y,w,h)
