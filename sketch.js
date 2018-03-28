@@ -10,20 +10,26 @@ var recRStep; // GUI step
 var triB = 150;
 var triF = 50;
 // setup variables for text
+var leaterAOP = true;
 var textLS = 210;
-var textSS = 85;
-// meue
+var textSS = 60;
+// meue and canvas variable
 var gui;
+var canvas;
 
 // Setup run one on start up
 function setup() {
   // this set up the canvas-screen we can drwa in
   // we put it in a variable to edit later like if we whant the canvas at a certen place
-  var canvas = createCanvas(360, 360);
+  canvas = createCanvas(360, 360);
+  canvas.parent("p5jsCSSAlogo");
   /*
   makeing the canvas crate some variables we can use like height and width
   point (0,0) is not in the botome left it is top left
   */
+
+  // seting the angle of the sesa
+  recR = radians(-17);
 
   // setup debug tool's
   // setup var need for makeing the meue
@@ -33,7 +39,7 @@ function setup() {
   // makeing the meue
   gui = createGui("debug");
   // add the recR as a oppshen
-  gui.addGlobals('recR','textLS', 'textSS');
+  gui.addGlobals('recR','recW','recC','recH','leaterAOP','textLS','textSS','triB','triF');
   // hideing the meue
   gui.hide();
 
@@ -58,26 +64,44 @@ function draw() {
   // use Matrix to rotate so I can reset later
   applyMatrix(cos_a, sin_a, -sin_a, cos_a, 0, 0);
   // (x, y, w, h, d)
+  fill(255);
   rect(0, 0, recW, recH, recC);
 
   // Add css to the bar
+  fill(0);
   textSize(textSS);
-  text('css', recC-(recW/2), recH/2);
+  text('CSS', recC-(recW/2), recH/2);
 
   // I reset the orgen and Matrix to not efect other things
   translate(0,0);
   resetMatrix();
 
-  // OLD use when makeing the basic shape
+  if(!leaterAOP){
     // add triangele
     // (x1,y1,x2,y2,x3,y3)
-    //triangle((width/2)-(triB/2), height-triF, (width/2), (height/2), (width/2)+(triB/2), height-triF);
+    fill(255);
+    triangle((width/2)-(triB/2), height-triF, (width/2), (height/2), (width/2)+(triB/2), height-triF);
+  }
 
   // put the lass leater of A down
-  textSize(textLS);
-  text('A', (width/2)-(triB/2), height-triF);
+  if(leaterAOP){// see opshens with A leater
+    fill(0);
+    textSize(textLS);
+    text('A', (width/2)-(triB/2), height-triF);
+  }
 
   // add a cericle I am going to use the hight of the rect
   // (x,y,w,h)
+  if(leaterAOP){
+    fill(85);
+  }else {
+    fill(255);    
+  }
   ellipse((width/2), (height/2), recH, recH);
+
+  if(!leaterAOP){// see opshens with A leater
+    fill(0);
+    textSize(textSS);
+    text('A', (width/2)-(recH/2), (height/2)+(recH/2));
+  }
 }
