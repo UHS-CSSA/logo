@@ -2,7 +2,7 @@
 var recW = 280;
 var recH = 40;
 var recC = 20;
-var recR = 0;
+var recR = -17;
 var recRMin; // GUI min
 var recRMax; // GUI max
 var recRStep; // GUI step
@@ -28,14 +28,13 @@ function setup() {
   point (0,0) is not in the botome left it is top left
   */
 
-  // seting the angle of the sesa
-  recR = radians(-17);
+  angleMode(DEGREES); // Change the mode to DEGREES
 
   // setup debug tool's
   // setup var need for makeing the meue
-  recRMin = -PI;
-  recRMax = PI;
-  recRStep = PI/180;
+  recRMin = -180;
+  recRMax = 180;
+  recRStep = 1;
   // makeing the meue
   gui = createGui("debug");
   // add the recR as a oppshen
@@ -95,7 +94,7 @@ function draw() {
   if(leaterAOP){
     fill(85);
   }else {
-    fill(255);    
+    fill(255);
   }
   ellipse((width/2), (height/2), recH, recH);
 
