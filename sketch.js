@@ -3,7 +3,7 @@ var recW = 280;
 var recH = 40;
 var recC = 20;
 var recR = 0;
-var recRMin = 0; // GUI min
+var recRMin; // GUI min
 var recRMax; // GUI max
 var recRStep; // GUI step
 // setup variables for the triangele
@@ -23,7 +23,8 @@ function setup() {
   */
 
   // debug tool's
-  recRMax = PI*2;
+  recRMin = -PI;
+  recRMax = PI;
   recRStep = PI/180;
   gui = createGui("debug");
   gui.addGlobals('recR');
@@ -37,14 +38,20 @@ function draw() {
   // set the bockground cooler
   background('#de411b');
 
-  // add a round rectangle
+  var cos_a = cos(recR);
+  var sin_a = sin(recR);
+  // add a round rectangle+
+  // use the translate so the center of cange is locad difrentaly
+  translate(width/2, height/2);
+  // use Matrix to rotate so I can reset later
+  applyMatrix(cos_a, sin_a, -sin_a, cos_a, 0, 0);
   // (x, y, w, h, d)
-  //translate((width/2), (height/2));
-  rotate(recR);
-  //rect((width/2)-(recW/2), (height/2)-(recH/2), recW, recH, recC);
-  rect((width/2), (height/2), recW, recH, recC);
+  rect(0, 0, recW, recH, recC);
 
-  rotate(0);
+  // I reset the orgen and Matrix to not efect other things
+  translate(0,0);
+  resetMatrix();
+
   // add triangele
   // (x1,y1,x2,y2,x3,y3)
   triangle((width/2)-(triB/2), height-triF, (width/2), (height/2), (width/2)+(triB/2), height-triF);
