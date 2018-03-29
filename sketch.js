@@ -10,12 +10,15 @@ var recRStep; // GUI step
 var triB = 150;
 var triF = 50;
 // setup variables for text
-var leaterAOP = true;
 var textLS = 210;
 var textSS = 60;
 // meue and canvas variable
-var gui;
+var debugGUI;
 var canvas;
+// Flages for things
+var boxOFlag = true;
+var leaterAOP = true;
+var debugGUIFlag = false;
 
 // Setup run one on start up
 function setup() {
@@ -36,11 +39,11 @@ function setup() {
   recRMax = 180;
   recRStep = 1;
   // makeing the meue
-  gui = createGui("debug");
+  debugGUI = createGui("debug");
   // add the recR as a oppshen
-  gui.addGlobals('recR','recW','recC','recH','leaterAOP','textLS','textSS','triB','triF');
+  debugGUI.addGlobals('recR','recW','recC','recH','leaterAOP','textLS','textSS','triB','triF','boxOFlag');
   // hideing the meue
-  gui.hide();
+  debugGUI.hide();
 
   // seting the way that x and y work on rect
   rectMode(CENTER);
@@ -54,6 +57,13 @@ function draw() {
   // set the bockground cooler
   background('#de411b');
 
+  // cheack if debug GUI was on or off
+  if(debugGUIFlag){
+    debugGUI.show();
+  }else{
+    debugGUI.hide();
+  }
+
   // geting the cos and sin of the angle
   var cos_a = cos(recR);
   var sin_a = sin(recR);
@@ -62,9 +72,11 @@ function draw() {
   translate(width/2, height/2);
   // use Matrix to rotate so I can reset later
   applyMatrix(cos_a, sin_a, -sin_a, cos_a, 0, 0);
-  // (x, y, w, h, d)
-  fill(255);
-  rect(0, 0, recW, recH, recC);
+  if(boxOFlag){
+    // (x, y, w, h, d)
+    fill(255);
+    rect(0, 0, recW, recH, recC);
+  }
 
   // Add css to the bar
   fill(0);
