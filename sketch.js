@@ -17,8 +17,10 @@ var debugGUI;
 var canvas;
 // Flages for things
 var boxOFlag = true;
+var handlesFlage = false;
 var leaterAOP = true;
 var debugGUIFlag = false;
+var typeTextFlage = true;
 
 // Setup run one on start up
 function setup() {
@@ -41,7 +43,8 @@ function setup() {
   // makeing the meue
   debugGUI = createGui("debug");
   // add the recR as a oppshen
-  debugGUI.addGlobals('recR','recW','recC','recH','leaterAOP','textLS','textSS','triB','triF','boxOFlag');
+  debugGUI.addGlobals('recR','recW','recC','recH','leaterAOP','textLS',
+    'textSS','triB','triF','boxOFlag', "typeTextFlage", "handlesFlage");
   // hideing the meue
   debugGUI.hide();
 
@@ -76,14 +79,18 @@ function draw() {
     // (x, y, w, h, d)
     fill(255);
     rect(0, 0, recW, recH, recC);
-    rect(-25, -recH, 10, recH);
-    rect(25, -recH, 10, recH);
+    if(handlesFlage){
+      rect(-25, -recH, 10, recH);
+      rect(25, -recH, 10, recH);
+    }
   }
 
   // Add css to the bar
   fill(0);
-  textSize(textSS);
-  text('CSS', recC-(recW/2), recH/2);
+  if(typeTextFlage){
+    textSize(textSS);
+    text('CSS', recC-(recW/2), recH/2);
+  }
 
   // I reset the orgen and Matrix to not efect other things
   translate(0,0);
