@@ -76,6 +76,8 @@ function draw() {
     // (x, y, w, h, d)
     fill(255);
     rect(0, 0, recW, recH, recC);
+    rect(-25, -recH, 10, recH);
+    rect(25, -recH, 10, recH);
   }
 
   // Add css to the bar
