@@ -5,3 +5,4 @@
  1. ![alt text](https://raw.githubusercontent.com/UHS-CSSA/logo/master/Images/v0.1.png)
  2. ![alt text](https://raw.githubusercontent.com/UHS-CSSA/logo/master/Images/v0.2.png)
  3. ![alt text](https://raw.githubusercontent.com/UHS-CSSA/logo/master/Images/v0.3.png)
+ 4. ![alt text](https://raw.githubusercontent.com/UHS-CSSA/logo/master/Images/v0.4.png)
