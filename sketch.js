@@ -12,6 +12,8 @@ var triF = 50;
 // setup variables for text
 var textLS = 210;
 var textSS = 60;
+// variable to store image
+var imgCSSA;
 // meue and canvas variable
 var debugGUI;
 var canvas;
@@ -21,6 +23,11 @@ var handlesFlage = false;
 var leaterAOP = true;
 var debugGUIFlag = false;
 var typeTextFlage = true;
+
+// load image
+function preload(){
+  imgCSSA = loadImage("Images/CSSA Text logo 1-01.png");
+}
 
 // Setup run one on start up
 function setup() {
@@ -90,6 +97,8 @@ function draw() {
   if(typeTextFlage){
     textSize(textSS);
     text('CSS', recC-(recW/2), recH/2);
+  }else {
+    image(imgCSSA, recC-(recW/2), -recH/2, (1/3)*recW, recH);
   }
 
   // I reset the orgen and Matrix to not efect other things
@@ -120,8 +129,10 @@ function draw() {
   ellipse((width/2), (height/2), recH, recH);
 
   if(!leaterAOP){// see opshens with A leater
-    fill(0);
-    textSize(textSS);
-    text('A', (width/2)-(recH/2), (height/2)+(recH/2));
+    if(typeTextFlage){
+      fill(0);
+      textSize(textSS);
+      text('A', (width/2)-(recH/2), (height/2)+(recH/2));
+    }
   }
 }
