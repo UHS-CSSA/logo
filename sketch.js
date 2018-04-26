@@ -26,7 +26,7 @@ var typeTextFlage = true;
 
 // load image
 function preload(){
-  imgCSSA = loadImage("Images/CSSA Text logo 1-01.png");
+  imgCSSA = loadImage("Images/CSSA Text Logo Ver 2.png");
 }
 
 // Setup run one on start up
